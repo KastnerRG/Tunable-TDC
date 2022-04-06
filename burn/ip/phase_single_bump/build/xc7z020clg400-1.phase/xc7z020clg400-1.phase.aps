@@ -1,0 +1,25 @@
+<AutoPilot:solution xmlns:AutoPilot="com.autoesl.autopilot.solution">
+    <config>
+        <schedule model="phase"/>
+    </config>
+    <ExportDesign askAgain="true" evaluate="false" rtl="verilog" formatName="ip_catalog">
+        <Format formatName="ip_catalog" description="HLS Core: phase Function for the Burn-In Project" vendor="UCSD" library="hlsip" ipname="" version="1.0" driver_input_dir="" display_name="PhaseShifter" taxonomy=""/>
+    </ExportDesign>
+    <name>
+        <value string="xc7z020clg400-1.phase"/>
+    </name>
+    <project>
+        <value string="build"/>
+    </project>
+    <targetInfo>
+        <TargetInfo value="xc7z020:clg400:-1"/>
+    </targetInfo>
+    <libraryList>
+        <library value="xilinx/zynq/zynq" name="DefaultPlatform"/>
+        <library value="xilinx/zynq/zynq_fpv6" name="DefaultPlatform"/>
+    </libraryList>
+    <clockList>
+        <clock default="false" name="default" period="10"/>
+    </clockList>
+</AutoPilot:solution>
+

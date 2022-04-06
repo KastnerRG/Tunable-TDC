@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="present" xd:componentRef="present" xd:initiationInterval="66" xd:clockPeriod="10.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="stateIn.data" xd:originalName="stateIn" xd:direction="in" xd:interfaceRef="stateIn" xd:busTypeRef="axis" xd:arraySize="512" xd:dataWidth="144"/>
+  <xd:arg xd:name="stateIn.last" xd:originalName="stateIn" xd:direction="in" xd:interfaceRef="stateIn" xd:busTypeRef="axis" xd:arraySize="512" xd:dataWidth="1"/>
+  <xd:arg xd:name="stateOut.data" xd:originalName="stateOut" xd:direction="out" xd:interfaceRef="stateOut" xd:busTypeRef="axis" xd:arraySize="256" xd:dataWidth="64"/>
+  <xd:arg xd:name="stateOut.last" xd:originalName="stateOut" xd:direction="out" xd:interfaceRef="stateOut" xd:busTypeRef="axis" xd:arraySize="256" xd:dataWidth="1"/>
+  <xd:latencyEstimates xd:best-case="65" xd:worst-case="65" xd:average-case="65"/>
+  <xd:resourceEstimates xd:LUT="938" xd:FF="978" xd:BRAM="16" xd:DSP="0"/>
+</xd:acceleratorMap>

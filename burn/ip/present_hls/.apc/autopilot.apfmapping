@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="present.cpp" path="/home/colin/burninator/burn/ip/present_hls/src/present.cpp"/>
+    <originFiles name="present.h" path="/home/colin/burninator/burn/ip/present_hls/src/present.h"/>
+    <originFiles name="present_rounds.cpp" path="/home/colin/burninator/burn/ip/present_hls/src/present_rounds.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="tb_present.cpp" path="/home/colin/burninator/burn/ip/present_hls/tb/tb_present.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

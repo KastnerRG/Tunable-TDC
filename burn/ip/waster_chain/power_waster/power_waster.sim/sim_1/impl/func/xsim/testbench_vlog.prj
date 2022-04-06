@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"testbench_func_impl.v" \
+"../../../../../power_waster.srcs/sim_1/new/testbench.v" \
+
+# Do not sort compile order
+nosort

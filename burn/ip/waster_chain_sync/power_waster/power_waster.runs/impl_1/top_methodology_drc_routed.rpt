@@ -1,0 +1,195 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
+| Date         : Wed Dec 16 18:37:27 2020
+| Host         : colindrewes running 64-bit Ubuntu 18.04.5 LTS
+| Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
+| Design       : top
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 32
++-----------+----------+-------------------+------------+
+| Rule      | Severity | Description       | Violations |
++-----------+----------+-------------------+------------+
+| TIMING-20 | Warning  | Non-clocked latch | 32         |
++-----------+----------+-------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch pw[0]/out_reg cannot be properly analyzed as its control pin pw[0]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch pw[10]/out_reg cannot be properly analyzed as its control pin pw[10]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch pw[11]/out_reg cannot be properly analyzed as its control pin pw[11]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch pw[12]/out_reg cannot be properly analyzed as its control pin pw[12]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch pw[13]/out_reg cannot be properly analyzed as its control pin pw[13]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch pw[14]/out_reg cannot be properly analyzed as its control pin pw[14]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch pw[15]/out_reg cannot be properly analyzed as its control pin pw[15]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch pw[16]/out_reg cannot be properly analyzed as its control pin pw[16]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#9 Warning
+Non-clocked latch  
+The latch pw[17]/out_reg cannot be properly analyzed as its control pin pw[17]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#10 Warning
+Non-clocked latch  
+The latch pw[18]/out_reg cannot be properly analyzed as its control pin pw[18]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#11 Warning
+Non-clocked latch  
+The latch pw[19]/out_reg cannot be properly analyzed as its control pin pw[19]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#12 Warning
+Non-clocked latch  
+The latch pw[1]/out_reg cannot be properly analyzed as its control pin pw[1]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#13 Warning
+Non-clocked latch  
+The latch pw[20]/out_reg cannot be properly analyzed as its control pin pw[20]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#14 Warning
+Non-clocked latch  
+The latch pw[21]/out_reg cannot be properly analyzed as its control pin pw[21]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#15 Warning
+Non-clocked latch  
+The latch pw[22]/out_reg cannot be properly analyzed as its control pin pw[22]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#16 Warning
+Non-clocked latch  
+The latch pw[23]/out_reg cannot be properly analyzed as its control pin pw[23]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#17 Warning
+Non-clocked latch  
+The latch pw[24]/out_reg cannot be properly analyzed as its control pin pw[24]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#18 Warning
+Non-clocked latch  
+The latch pw[25]/out_reg cannot be properly analyzed as its control pin pw[25]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#19 Warning
+Non-clocked latch  
+The latch pw[26]/out_reg cannot be properly analyzed as its control pin pw[26]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#20 Warning
+Non-clocked latch  
+The latch pw[27]/out_reg cannot be properly analyzed as its control pin pw[27]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#21 Warning
+Non-clocked latch  
+The latch pw[28]/out_reg cannot be properly analyzed as its control pin pw[28]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#22 Warning
+Non-clocked latch  
+The latch pw[29]/out_reg cannot be properly analyzed as its control pin pw[29]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#23 Warning
+Non-clocked latch  
+The latch pw[2]/out_reg cannot be properly analyzed as its control pin pw[2]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#24 Warning
+Non-clocked latch  
+The latch pw[30]/out_reg cannot be properly analyzed as its control pin pw[30]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#25 Warning
+Non-clocked latch  
+The latch pw[31]/out_reg cannot be properly analyzed as its control pin pw[31]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#26 Warning
+Non-clocked latch  
+The latch pw[3]/out_reg cannot be properly analyzed as its control pin pw[3]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#27 Warning
+Non-clocked latch  
+The latch pw[4]/out_reg cannot be properly analyzed as its control pin pw[4]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#28 Warning
+Non-clocked latch  
+The latch pw[5]/out_reg cannot be properly analyzed as its control pin pw[5]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#29 Warning
+Non-clocked latch  
+The latch pw[6]/out_reg cannot be properly analyzed as its control pin pw[6]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#30 Warning
+Non-clocked latch  
+The latch pw[7]/out_reg cannot be properly analyzed as its control pin pw[7]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#31 Warning
+Non-clocked latch  
+The latch pw[8]/out_reg cannot be properly analyzed as its control pin pw[8]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#32 Warning
+Non-clocked latch  
+The latch pw[9]/out_reg cannot be properly analyzed as its control pin pw[9]/out_reg/G is not reached by a timing clock
+Related violations: <none>
+
+

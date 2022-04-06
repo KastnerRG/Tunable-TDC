@@ -1,0 +1,506 @@
+{
+  "Top": "phase",
+  "RtlTop": "phase",
+  "RtlPrefix": "",
+  "SourceLanguage": "cpp",
+  "ResetStyle": "control",
+  "GenerateBdFiles": "0",
+  "HostMachineBits": "64",
+  "Target": {
+    "Family": "zynq",
+    "Device": "xc7z020",
+    "Package": "clg400",
+    "Speed": "-1"
+  },
+  "HlsSolution": {
+    
+  },
+  "ClockInfo": {
+    "ClockName": "ap_clk",
+    "ClockPeriod": "10",
+    "IsCombLogic": "0",
+    "II": "x",
+    "Latency": "6",
+    "Uncertainty": "1.25"
+  },
+  "Xdc": {"OocClocks": ["create_clock -name ap_clk -period 10.000 [get_ports ap_clk]"]},
+  "Ipx": {
+    "Vendor": "UCSD",
+    "Library": "hlsip",
+    "Name": "phase",
+    "Version": "1.0",
+    "DisplayName": "PhaseShifter",
+    "Revision": "",
+    "Description": "HLS Core: phase Function for the Burn-In Project",
+    "Taxonomy": "\/VIVADO_HLS_IP"
+  },
+  "Files": {
+    "CSource": ["..\/..\/main.cpp"],
+    "Vhdl": [
+      "impl\/vhdl\/phase_CNTRL_s_axi.vhd",
+      "impl\/vhdl\/phase.vhd"
+    ],
+    "Verilog": [
+      "impl\/verilog\/phase_CNTRL_s_axi.v",
+      "impl\/verilog\/phase.v"
+    ],
+    "SwDriver": [
+      "impl\/misc\/drivers\/phase_v1_0\/data\/phase.mdd",
+      "impl\/misc\/drivers\/phase_v1_0\/data\/phase.tcl",
+      "impl\/misc\/drivers\/phase_v1_0\/src\/Makefile",
+      "impl\/misc\/drivers\/phase_v1_0\/src\/xphase.c",
+      "impl\/misc\/drivers\/phase_v1_0\/src\/xphase.h",
+      "impl\/misc\/drivers\/phase_v1_0\/src\/xphase_hw.h",
+      "impl\/misc\/drivers\/phase_v1_0\/src\/xphase_linux.c",
+      "impl\/misc\/drivers\/phase_v1_0\/src\/xphase_sinit.c"
+    ],
+    "Misc": ["impl\/misc\/logo.png"]
+  },
+  "SubcoreInfo": {
+    "HasXpmMemory": false,
+    "HasClockedDsp": false,
+    "IP": []
+  },
+  "Interfaces": {
+    "ap_clk": {
+      "type": "clock",
+      "ctype": {"CLK": {"Type": "bool"}},
+      "buses": "s_axi_CNTRL",
+      "reset": "ap_rst_n"
+    },
+    "ap_rst_n": {
+      "type": "reset",
+      "polarity": "ACTIVE_LOW",
+      "ctype": {"RST": {"Type": "bool"}}
+    },
+    "interrupt": {
+      "type": "interrupt",
+      "ctype": {"INTERRUPT": {"Type": "bool"}}
+    },
+    "ps_done_V": {
+      "type": "data",
+      "dir": "in",
+      "width": "1",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        }}
+    },
+    "psen_V": {
+      "type": "data",
+      "dir": "out",
+      "width": "1",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        }}
+    },
+    "psincdec_V": {
+      "type": "data",
+      "dir": "out",
+      "width": "1",
+      "ctype": {"DATA": {
+          "Type": "integer unsigned",
+          "Width": "1"
+        }}
+    },
+    "s_axi_CNTRL": {
+      "type": "axi4lite",
+      "is_adaptor": "true",
+      "mode": "slave",
+      "port_prefix": "s_axi_CNTRL",
+      "param_prefix": "C_S_AXI_CNTRL",
+      "addr_bits": "5",
+      "registers": [
+        {
+          "offset": "0x00",
+          "name": "CTRL",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "Control signals",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "AP_START",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_start'."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "AP_DONE",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_done'."
+            },
+            {
+              "offset": "2",
+              "width": "1",
+              "name": "AP_IDLE",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_idle'."
+            },
+            {
+              "offset": "3",
+              "width": "1",
+              "name": "AP_READY",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Control signal Register for 'ap_ready'."
+            },
+            {
+              "offset": "4",
+              "width": "3",
+              "name": "RESERVED_1",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            },
+            {
+              "offset": "7",
+              "width": "1",
+              "name": "AUTO_RESTART",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Control signal Register for 'auto_restart'."
+            },
+            {
+              "offset": "8",
+              "width": "24",
+              "name": "RESERVED_2",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x04",
+          "name": "GIER",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "Global Interrupt Enable Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "Enable",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Master enable for the device interrupt output to the system interrupt controller: 0 = Disabled, 1 = Enabled"
+            },
+            {
+              "offset": "1",
+              "width": "31",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x08",
+          "name": "IP_IER",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "IP Interrupt Enable Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "CHAN0_INT_EN",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Enable Channel 0 (ap_done) Interrupt.  0 = Disabled, 1 = Enabled."
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "CHAN1_INT_EN",
+              "access": "RW",
+              "reset_value": "0",
+              "description": "Enable Channel 1 (ap_ready) Interrupt.  0 = Disabled, 1 = Enabled."
+            },
+            {
+              "offset": "2",
+              "width": "30",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x0c",
+          "name": "IP_ISR",
+          "access": "RW",
+          "reset_value": "0x0",
+          "description": "IP Interrupt Status Register",
+          "fields": [
+            {
+              "offset": "0",
+              "width": "1",
+              "name": "CHAN0_INT_ST",
+              "access": "RTOW",
+              "reset_value": "0",
+              "description": "Channel 0 (ap_done) Interrupt Status. 0 = No Channel 0 input interrupt, 1 = Channel 0 input interrup"
+            },
+            {
+              "offset": "1",
+              "width": "1",
+              "name": "CHAN1_INT_ST",
+              "access": "RTOW",
+              "reset_value": "0",
+              "description": "Channel 1 (ap_ready) Interrupt Status. 0 = No Channel 1 input interrupt, 1 = Channel 1 input interrup"
+            },
+            {
+              "offset": "2",
+              "width": "30",
+              "name": "RESERVED",
+              "access": "R",
+              "reset_value": "0",
+              "description": "Reserved.  0s on read."
+            }
+          ]
+        },
+        {
+          "offset": "0x10",
+          "name": "rincdec_V",
+          "access": "W",
+          "reset_value": "0x0",
+          "description": "Data signal of rincdec_V",
+          "fields": [{
+              "offset": "0",
+              "width": "32",
+              "name": "rincdec_V",
+              "access": "W",
+              "reset_value": "0",
+              "description": "Bit 31 to 0 Data signal of rincdec_V"
+            }]
+        }
+      ],
+      "memories": "",
+      "ctype": {
+        "AWVALID": {"Type": "bool"},
+        "AWREADY": {"Type": "bool"},
+        "WVALID": {"Type": "bool"},
+        "WREADY": {"Type": "bool"},
+        "BVALID": {"Type": "bool"},
+        "BREADY": {"Type": "bool"},
+        "BRESP": {
+          "Type": "integer unsigned",
+          "Width": "2"
+        },
+        "ARVALID": {"Type": "bool"},
+        "ARREADY": {"Type": "bool"},
+        "RVALID": {"Type": "bool"},
+        "RREADY": {"Type": "bool"},
+        "RRESP": {
+          "Type": "integer unsigned",
+          "Width": "2"
+        },
+        "AWADDR": {
+          "Type": "integer unsigned",
+          "Width": "5"
+        },
+        "WDATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        },
+        "WSTRB": {
+          "Type": "integer unsigned",
+          "Width": "4"
+        },
+        "ARADDR": {
+          "Type": "integer unsigned",
+          "Width": "5"
+        },
+        "RDATA": {
+          "Type": "integer unsigned",
+          "Width": "32"
+        }
+      },
+      "data_width": "32",
+      "port_width": {
+        "ARADDR": "5",
+        "AWADDR": "5",
+        "RDATA": "32",
+        "WDATA": "32",
+        "WSTRB": "4"
+      }
+    }
+  },
+  "RtlPorts": {
+    "s_axi_CNTRL_AWVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_CNTRL_AWREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_CNTRL_AWADDR": {
+      "dir": "in",
+      "width": "5"
+    },
+    "s_axi_CNTRL_WVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_CNTRL_WREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_CNTRL_WDATA": {
+      "dir": "in",
+      "width": "32"
+    },
+    "s_axi_CNTRL_WSTRB": {
+      "dir": "in",
+      "width": "4"
+    },
+    "s_axi_CNTRL_ARVALID": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_CNTRL_ARREADY": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_CNTRL_ARADDR": {
+      "dir": "in",
+      "width": "5"
+    },
+    "s_axi_CNTRL_RVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_CNTRL_RREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_CNTRL_RDATA": {
+      "dir": "out",
+      "width": "32"
+    },
+    "s_axi_CNTRL_RRESP": {
+      "dir": "out",
+      "width": "2"
+    },
+    "s_axi_CNTRL_BVALID": {
+      "dir": "out",
+      "width": "1"
+    },
+    "s_axi_CNTRL_BREADY": {
+      "dir": "in",
+      "width": "1"
+    },
+    "s_axi_CNTRL_BRESP": {
+      "dir": "out",
+      "width": "2"
+    },
+    "ap_clk": {
+      "dir": "in",
+      "width": "1"
+    },
+    "ap_rst_n": {
+      "dir": "in",
+      "width": "1"
+    },
+    "interrupt": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "psincdec_V": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "psen_V": {
+      "dir": "out",
+      "width": "1",
+      "isVector": "true"
+    },
+    "ps_done_V": {
+      "dir": "in",
+      "width": "1",
+      "isVector": "true"
+    }
+  },
+  "CPorts": {
+    "rincdec_V": {
+      "interfaceRef": "s_axi_CNTRL",
+      "dir": "in",
+      "offset": "16",
+      "statusOffset": "NA",
+      "handshakeRef": "ap_none",
+      "Object": "CNTRL"
+    },
+    "ap_ctrl": {
+      "interfaceRef": "s_axi_CNTRL",
+      "dir": "in",
+      "offset": "0"
+    },
+    "psincdec_V": {
+      "interfaceRef": "psincdec_V",
+      "dir": "out",
+      "dataWidth": "1",
+      "handshakeRef": "ap_none",
+      "firstOutLatency": "2"
+    },
+    "psen_V": {
+      "interfaceRef": "psen_V",
+      "dir": "out",
+      "dataWidth": "1",
+      "handshakeRef": "ap_none",
+      "firstOutLatency": "1"
+    },
+    "ps_done_V": {
+      "interfaceRef": "ps_done_V",
+      "dir": "in",
+      "dataWidth": "1",
+      "handshakeRef": "ap_none"
+    }
+  },
+  "ModuleInfo": {
+    "Hierarchy": {"ModuleName": "phase"},
+    "Metrics": {"phase": {
+        "Latency": {
+          "LatencyBest": "6",
+          "LatencyAvg": "6",
+          "LatencyWorst": "6",
+          "PipelineII": "7",
+          "PipelineDepth": "",
+          "PipelineType": "none"
+        },
+        "Timing": {
+          "Target": "10.00",
+          "Uncertainty": "1.25",
+          "Estimate": "1.000"
+        },
+        "Area": {
+          "BRAM_18K": "0",
+          "FF": "84",
+          "LUT": "169",
+          "DSP48E": "0"
+        }
+      }}
+  },
+  "Sdx": {
+    "Target": "none",
+    "ProfileOption": "0",
+    "ProfileType": "none"
+  },
+  "GenData": {
+    "DataVersion": "0.1",
+    "Time": "2020-10-01 23:13:05 PDT",
+    "ToolName": "vivado_hls",
+    "ToolVersion": "2018.2"
+  }
+}

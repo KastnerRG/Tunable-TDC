@@ -1,0 +1,152 @@
+
+
+================================================================
+== Vivado HLS Report for 'present'
+================================================================
+* Date:           Sun Oct  4 15:11:55 2020
+
+* Version:        2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)
+* Project:        present_hls
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     4.244|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |   65|   65|   65|   65|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 4
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+	4  / true
+4 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 0.00>
+ST_1 : Operation 5 [2/2] (0.00ns)   --->   "%empty = call { i144, i1 } @_ssdm_op_Read.axis.volatile.i144P.i1P(i144* %stateIn_data_V, i1* %stateIn_last_V)"   --->   Operation 5 'read' 'empty' <Predicate = true> <Delay = 0.00> <Core = "AXI4Stream">   --->   Core 5 'AXI4Stream' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.99>
+ST_2 : Operation 6 [1/2] (0.00ns)   --->   "%empty = call { i144, i1 } @_ssdm_op_Read.axis.volatile.i144P.i1P(i144* %stateIn_data_V, i1* %stateIn_last_V)"   --->   Operation 6 'read' 'empty' <Predicate = true> <Delay = 0.00> <Core = "AXI4Stream">   --->   Core 5 'AXI4Stream' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+ST_2 : Operation 7 [1/1] (0.00ns)   --->   "%tmp_data_V = extractvalue { i144, i1 } %empty, 0"   --->   Operation 7 'extractvalue' 'tmp_data_V' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 8 [1/1] (0.00ns)   --->   "%stateIn_last_V_tmp = extractvalue { i144, i1 } %empty, 1"   --->   Operation 8 'extractvalue' 'stateIn_last_V_tmp' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 9 [1/1] (0.00ns)   --->   "%p_Result_s = call i64 @_ssdm_op_PartSelect.i64.i144.i32.i32(i144 %tmp_data_V, i32 80, i32 143)" [present_hls/src/present.cpp:13]   --->   Operation 9 'partselect' 'p_Result_s' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 10 [1/1] (0.00ns)   --->   "%tmp_82 = trunc i144 %tmp_data_V to i80" [present_hls/src/present.cpp:13]   --->   Operation 10 'trunc' 'tmp_82' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 11 [2/2] (0.99ns)   --->   "%cipher_V = call fastcc i64 @present_rounds(i64 %p_Result_s, i80 %tmp_82)" [present_hls/src/present.cpp:13]   --->   Operation 11 'call' 'cipher_V' <Predicate = true> <Delay = 0.99> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 0.99>
+ST_3 : Operation 12 [1/2] (0.99ns)   --->   "%cipher_V = call fastcc i64 @present_rounds(i64 %p_Result_s, i80 %tmp_82)" [present_hls/src/present.cpp:13]   --->   Operation 12 'call' 'cipher_V' <Predicate = true> <Delay = 0.99> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_3 : Operation 13 [2/2] (0.00ns)   --->   "call void @_ssdm_op_Write.axis.volatile.i64P.i1P(i64* %stateOut_data_V, i1* %stateOut_last_V, i64 %cipher_V, i1 %stateIn_last_V_tmp)" [present_hls/src/present.cpp:13]   --->   Operation 13 'write' <Predicate = true> <Delay = 0.00> <Core = "AXI4Stream">   --->   Core 5 'AXI4Stream' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 14 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i144* %stateIn_data_V), !map !124"   --->   Operation 14 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 15 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %stateIn_last_V), !map !130"   --->   Operation 15 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 16 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i64* %stateOut_data_V), !map !134"   --->   Operation 16 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 17 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i1* %stateOut_last_V), !map !140"   --->   Operation 17 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 18 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([8 x i8]* @present_str) nounwind"   --->   Operation 18 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 19 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i64* %stateOut_data_V, i1* %stateOut_last_V, [5 x i8]* @p_str, i32 1, i32 1, [5 x i8]* @p_str6, i32 0, i32 256, [1 x i8]* @p_str7, [1 x i8]* @p_str7, [1 x i8]* @p_str7, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str7, [1 x i8]* @p_str7) nounwind" [present_hls/src/present.cpp:8]   --->   Operation 19 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 20 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i144* %stateIn_data_V, i1* %stateIn_last_V, [5 x i8]* @p_str, i32 1, i32 1, [5 x i8]* @p_str6, i32 0, i32 512, [1 x i8]* @p_str7, [1 x i8]* @p_str7, [1 x i8]* @p_str7, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str7, [1 x i8]* @p_str7) nounwind" [present_hls/src/present.cpp:9]   --->   Operation 20 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 21 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32 0, [11 x i8]* @p_str8, i32 0, i32 0, [1 x i8]* @p_str7, i32 0, i32 0, [1 x i8]* @p_str7, [1 x i8]* @p_str7, [1 x i8]* @p_str7, i32 0, i32 0, i32 0, i32 0, [1 x i8]* @p_str7, [1 x i8]* @p_str7) nounwind" [present_hls/src/present.cpp:10]   --->   Operation 21 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 22 [1/1] (0.00ns)   --->   "%tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([11 x i8]* @p_str9)" [present_hls/src/present.cpp:15]   --->   Operation 22 'specregionbegin' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 23 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecProtocol(i32 1, [1 x i8]* @p_str7) nounwind" [present_hls/src/present.cpp:16]   --->   Operation 23 'specprotocol' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 24 [1/2] (0.00ns)   --->   "call void @_ssdm_op_Write.axis.volatile.i64P.i1P(i64* %stateOut_data_V, i1* %stateOut_last_V, i64 %cipher_V, i1 %stateIn_last_V_tmp)" [present_hls/src/present.cpp:13]   --->   Operation 24 'write' <Predicate = true> <Delay = 0.00> <Core = "AXI4Stream">   --->   Core 5 'AXI4Stream' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : >
+ST_4 : Operation 25 [1/1] (0.00ns)   --->   "%empty_17 = call i32 (...)* @_ssdm_op_SpecRegionEnd([11 x i8]* @p_str9, i32 %tmp)" [present_hls/src/present.cpp:19]   --->   Operation 25 'specregionend' 'empty_17' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 26 [1/1] (0.00ns)   --->   "ret void" [present_hls/src/present.cpp:20]   --->   Operation 26 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 0ns
+The critical path consists of the following:
+
+ <State 2>: 0.99ns
+The critical path consists of the following:
+	axis read on port 'stateIn_data_V' [18]  (0 ns)
+	'call' operation ('cipher.V', present_hls/src/present.cpp:13) to 'present_rounds' [23]  (0.99 ns)
+
+ <State 3>: 0.99ns
+The critical path consists of the following:
+	'call' operation ('cipher.V', present_hls/src/present.cpp:13) to 'present_rounds' [23]  (0.99 ns)
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

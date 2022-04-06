@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [RTGEN 206-101] Register 'state_V' is power-on initialization." projectName="orcaPLGate" solutionName="orcaPLGate" date="2020-02-16T13:41:14.285-0800" type="Warning"/>
+        <logs message="WARNING: [SYN 201-561] Cannot apply I/O mode 'ap_ctrl_none' on port 'PS_V' changing to the default 'ap_none' mode." projectName="orcaPLGate" solutionName="orcaPLGate" date="2020-02-16T13:41:14.238-0800" type="Warning"/>
+        <logs message="WARNING: [SYN 201-561] Cannot apply I/O mode 'ap_ctrl_none' on port 'pulse_V' changing to the default 'ap_none' mode." projectName="orcaPLGate" solutionName="orcaPLGate" date="2020-02-16T13:41:14.229-0800" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>
