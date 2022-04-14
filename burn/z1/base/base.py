@@ -32,12 +32,12 @@
 # USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 # DAMAGE.
 # ----------------------------------------------------------------------
-from burn import UcsdOverlay
+from burn import TopOverlay
 from pynq.gpio import GPIO
 from pynq.xlnk import Xlnk
 import numpy as np
 
-class baseOverlay(UcsdOverlay.UcsdOverlay):
+class baseOverlay(TopOverlay.TopOverlay):
     __RESET_VALUE = 0
     __NRESET_VALUE = 1
 
@@ -68,22 +68,6 @@ class baseOverlay(UcsdOverlay.UcsdOverlay):
             raise RuntimeError(f"Unknown Domain {domain}. Valid " +
                                "domains are: 1, 2")
     
-    def run_string(self, llen):
-        self._enable(1)
-        self._enable(2)
-        buflen = 2**(llen+1)
-        buf = self.__xlnk.cma_array([buflen * self.__FIFO_WIDTH>>2], np.uint32)
-        self.chain0.dataDma.recvchannel.transfer(buf)
-        self.chain0.pulsegen.run(llen+1)
-        self.chain0.dataDma.recvchannel.start()
-        self.chain0.dataDma.recvchannel.wait()
-        # String parsing 
-        ret = [f"{bin(x)[2:].rjust(32, '0')[::-1]}" for x in buf]
-        ret = np.reshape(ret, (buflen, self.__FIFO_WIDTH>>2))
-        ret = [''.join(x) for x in ret]
-        buf.freebuffer()
-        return ret[1::2]
-
     def run(self, llen):
         self._enable(1)
         self._enable(2)

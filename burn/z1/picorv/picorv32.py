@@ -32,7 +32,7 @@
 # USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 # DAMAGE.
 # ----------------------------------------------------------------------
-from burn import UcsdOverlay
+from burn import TopOverlay
 from burn.Processor import BramProcessor
 from pynq.xlnk import Xlnk
 from pynq.gpio import GPIO
@@ -40,7 +40,7 @@ import numpy as np
 import os
 import inspect
 
-class baseOverlay(UcsdOverlay.UcsdOverlay):
+class baseOverlay(TopOverlay.TopOverlay):
     __RESET_VALUE = 0
     __NRESET_VALUE = 1
 

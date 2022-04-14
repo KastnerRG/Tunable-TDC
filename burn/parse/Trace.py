@@ -1,39 +1,47 @@
+# ----------------------------------------------------------------------
+# Copyright (c) 2022, The Regents of the University of California All
+# rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#
+#     * Neither the name of The Regents of the University of California
+#       nor the names of its contributors may be used to endorse or
+#       promote products derived from this software without specific
+#       prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL REGENTS OF THE
+# UNIVERSITY OF CALIFORNIA BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS
+# OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+# TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+# USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+# DAMAGE.
+# ----------------------------------------------------------------------
 import gmpy2 as gmpy
 import numpy as np
 from datetime import datetime
 
 class Trace:
-#    _TRACE_BITS = 64
-#    _TRACE_BYTES = _TRACE_BITS >> 3
     def __init__(self):
         pass
-#        self._fmhz = float(fmhz)/4
-#        self._inst = inst
-#        self._agfi = agfi
-#        self._slot = slot
-#        self._time = datetime.fromtimestamp(time)
-#        self._bumps = bumps
-#        self._burn = burn
-#        self._pol = int(pol)
-
-    #@property
-    #def fmhz(self):
-    #    return (self._fmhz)
-
-    #@property
-    #def fhz(self):
-    #    return (self._fmhz * 10**6)
-
-    #def __str__(self):
-    #    agfis = AGFIListing.agfi_names
-    #    name = [k for k,v in agfis.items() if v == self._agfi][0]
-    #    
-    #    s = f'FSamp {self._fmhz:#3.2f} MHz, {self._bumps:#5d} Bumps, Burn-ID {self._burn}, Polarity {self._pol}, {self._inst}, {self._agfi} ({name:7s}), @ {self._time}'
-    #    return s
 
 class EdgeTrace(Trace):
     def __init__(self, data, edge):
-        #self._trace = [int.from_bytes(sample, 'little') for sample in data]
         
         self._trace = [int.from_bytes(sample, 'big') for sample in data]
         self.__edge = edge # True = Positive Edge, False = Negative Edge
@@ -78,8 +86,6 @@ class NegativeTrace(EdgeTrace):
 
 class CombinedTrace(Trace):
     def __init__(self, ts):
-        #ts = [data[i: i + self._TRACE_BYTES]
-        #      for i in range(0, len(data), self._TRACE_BYTES)]
         poss = ts[1::4]
         negs = ts[3::4]
 
@@ -94,23 +100,3 @@ class CombinedTrace(Trace):
     @property
     def neg(self):
         return self.__neg
-
-    #@classmethod
-    #def factory(cls, bs, fmhz):
-    #    h = bs[:bs.find(b'\x00')].decode()
-    #    bs = bs[bs.find(b'\x00'):]
-        #while(h):
-            # A header looks like:
-            # [i-03997d926ccb1c28b:agfi-098620b4c94df23bb:0:1574479312:-996:-1004:1:4194304]xx
-            # [Instance ID        :AGFI        :slot:Timestamp : Sensor 0 bumps:Sensor 1 Bumps:Polarity, Trace Samples
-    #    fs = h.strip('[x]').split(':')
-    #    l = int(fs[-1])
-    #    return CombinedTrace(fmhz, fs[0], fs[1], int(fs[2]), int(fs[3]), int(fs[4]), 0, fs[6], bs[:l])
-            #bs = bs[l:]
-
-#            ts.append(CombinedTrace(fmhz, fs[0], fs[1], int(fs[2]), int(fs[3]), int(fs[5]), 1, fs[6], bs[:l]))
-#            bs = bs[l:]
-
-            #h = bs[:bs.find(b'\x00')].decode()
-            #bs = bs[bs.find(b'\x00'):]
-       # return ts

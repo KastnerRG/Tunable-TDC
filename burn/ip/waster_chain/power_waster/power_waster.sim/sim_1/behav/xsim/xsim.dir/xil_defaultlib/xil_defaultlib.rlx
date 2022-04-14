@@ -1,8 +1,0 @@
-0.6
-2017.4
-Dec 15 2017
-20:57:24
-/home/mgobuluk/FPGA-PDN-ANALYTICS/power_waster/power_waster.sim/sim_1/behav/xsim/glbl.v,1513215259,verilog,,,,glbl,,,,,,,,
-/home/mgobuluk/FPGA-PDN-ANALYTICS/power_waster/power_waster.srcs/sim_1/new/testbench.v,1555105731,verilog,,,,testbench,,,,,,,,
-/home/mgobuluk/FPGA-PDN-ANALYTICS/power_waster/power_waster.srcs/sources_1/new/power_waster.v,1556142259,verilog,,/home/mgobuluk/FPGA-PDN-ANALYTICS/power_waster/power_waster.srcs/sources_1/new/top.v,,power_waster,,,,,,,,
-/home/mgobuluk/FPGA-PDN-ANALYTICS/power_waster/power_waster.srcs/sources_1/new/top.v,1556141048,verilog,,/home/mgobuluk/FPGA-PDN-ANALYTICS/power_waster/power_waster.srcs/sim_1/new/testbench.v,,top,,,,,,,,
