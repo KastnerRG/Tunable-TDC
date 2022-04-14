@@ -26,7 +26,7 @@ Once in this directory, with Vivado 2018.2 properly sourced, the bitstream and t
 make
 ```
 This already will source the correct placement directives for the TDC, and this can be seen in the final floor plan:
-![PicoRV Floorplan](imgs/pico_floorplan.png)
+![PicoRV Floorplan](imgs/picorv_floorplan.png)
 
 The sensor carry chain is colored ... with the processor colored ...
 
