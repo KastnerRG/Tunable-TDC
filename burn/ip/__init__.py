@@ -36,5 +36,3 @@ from .HlsCore import HlsCore
 
 from . import pulsegen
 from . import phase
-from . import trace_cntrl
-#from . import waster_chain
