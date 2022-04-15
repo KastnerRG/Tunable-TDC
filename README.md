@@ -28,7 +28,7 @@ make
 This already will source the correct placement directives for the TDC, and this can be seen in the final floor plan:
 ![PicoRV Floorplan](imgs/picorv_floorplan.png)
 
-The sensor carry chain is colored in red again, with the  PicoRV processor colored in purpule.
+The sensor carry chain is colored in red again, with the  PicoRV processor colored in purpul.
 
 ## Package Installation
 Integrated in the repository is a package for interfacing with the sensor architecture, as well as running arbitrary code on the PicoRV processor. This depends on a Pynq 2.5 or earlier installation of Pynq. This package can be installed from the top level directory with:
