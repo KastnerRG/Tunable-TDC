@@ -60,7 +60,7 @@ xilinx.com:ip:xlconcat:2.1\
 user.org:user:launchpad:1.0\
 xilinx.com:ip:axi_protocol_converter:2.1\
 UCSD:hlsip:pulsegen:1.0\
-user.org:user:pulsegen_sync:1.0\
+colindrewes.com:colindrewes:pulsegen_v:1.0\
 "
 
    set list_ips_missing ""
@@ -264,7 +264,7 @@ proc create_hier_cell_chain0 { parentCell nameHier } {
   set pulsegen [ create_bd_cell -type ip -vlnv UCSD:hlsip:pulsegen:1.0 pulsegen ]
 
   # Create instance: pulsegen_sync_0, and set properties
-  set pulsegen_sync_0 [ create_bd_cell -type ip -vlnv user.org:user:pulsegen_sync:1.0 pulsegen_sync_0 ]
+  set pulsegen_sync_0 [ create_bd_cell -type ip -vlnv colindrewes.com:colindrewes:pulsegen_v:1.0 pulsegen_sync_0 ]
 
   # Create instance: resetGpio, and set properties
   set resetGpio [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 resetGpio ]
