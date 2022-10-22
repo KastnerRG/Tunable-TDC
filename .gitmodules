@@ -1,0 +1,6 @@
+[submodule "burn/ip/basejump_stl"]
+	path = burn/ip/basejump_stl
+	url = git@github.com:bespoke-silicon-group/basejump_stl.git
+[submodule "burn/ip/sensor/verilator_xilinx"]
+	path = burn/ip/sensor/verilator_xilinx
+	url = git@github.com:fredrequin/verilator_xilinx.git
