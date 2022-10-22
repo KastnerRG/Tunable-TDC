@@ -7,15 +7,22 @@ VIVADO_SRC_PATH = .
 VIVADO_XPM_PATH = .
 
 VSOURCES := testbench.v
-VSOURCES += carry.v
 VSOURCES += $(BASEJUMP_STL_PATH)/bsg_test/bsg_nonsynth_reset_gen.v
 VSOURCES += $(BASEJUMP_STL_PATH)/bsg_test/bsg_nonsynth_clock_gen.v
 VSOURCES += $(BASEJUMP_STL_PATH)/bsg_test/bsg_nonsynth_dpi_clock_gen.v
+
+VSOURCES += $(VIVADO_UNISIM_PATH)/glbl.v
+VSOURCES += $(VIVADO_XPM_PATH)/xpm_cdc.sv
 VSOURCES += verilator_xilinx/CARRY4.v
 VSOURCES += verilator_xilinx/CARRY8.v
-VSOURCES += $(VIVADO_UNISIM_PATH)/glbl.v
-VSOURCES += $(VIVADO_SRC_PATH)/glbl.v
-VSOURCES += $(VIVADO_XPM_PATH)/xpm_cdc.sv
+VSOURCES += carry.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_dataflow/bsg_fifo_1r1w_small.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_dataflow/bsg_fifo_1r1w_small_unhardened.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_dataflow/bsg_fifo_tracker.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_mem/bsg_mem_1r1w.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_mem/bsg_mem_1r1w_synth.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_misc/bsg_counter_set_down.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_misc/bsg_counter_clear_up.v
 
 INCLUDES += -I$(BASEJUMP_STL_PATH)/bsg_misc
 INCLUDES += -I$(BASEJUMP_STL_PATH)/bsg_test
