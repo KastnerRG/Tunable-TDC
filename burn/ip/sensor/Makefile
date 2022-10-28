@@ -6,12 +6,14 @@ VIVADO_UNISIM_PATH = .
 VIVADO_SRC_PATH = .
 VIVADO_XPM_PATH = .
 
-VERILATOR_PATH = /opt/homebrew/Cellar/verilator/4.228/share/verilator/
+VERILATOR_ROOT = /opt/homebrew/Cellar/verilator/4.228/share/verilator/
 
 VSOURCES := top.v
 VSOURCES += $(BASEJUMP_STL_PATH)/bsg_test/bsg_nonsynth_reset_gen.v
 VSOURCES += $(BASEJUMP_STL_PATH)/bsg_test/bsg_nonsynth_clock_gen.v
 VSOURCES += $(BASEJUMP_STL_PATH)/bsg_test/bsg_nonsynth_dpi_clock_gen.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_test/bsg_nonsynth_dpi_from_fifo.v
+VSOURCES += $(BASEJUMP_STL_PATH)/bsg_test/bsg_nonsynth_dpi_gpio.v
 
 VSOURCES += $(VIVADO_UNISIM_PATH)/glbl.v
 VSOURCES += $(VIVADO_XPM_PATH)/xpm_cdc.sv
@@ -39,8 +41,8 @@ VDEFINES += -DONESPIN
 VFLAGS += -Wno-fatal
 
 INCLUDES += -Iobj_dir
-INCLUDES += -I$(VERILATOR_PATH)/include
-INCLUDES += -I$(VERILATOR_PATH)/include/vltstd
+INCLUDES += -I$(VERILATOR_ROOT)/include
+INCLUDES += -I$(VERILATOR_ROOT)/include/vltstd
 INCLUDES += -I$(BASEJUMP_STL_PATH)/bsg_test/
 
 CXXFLAGS += $(INCLUDES)
@@ -52,7 +54,19 @@ obj_dir: $(VSOURCES) $(CSOURCES)
 obj_dir/Vtop__ALL.a: | obj_dir
 	$(MAKE) -C $(dir $@) -f Vtop.mk 
 
-main.o: obj_dir
+%.o: $(VERILATOR_ROOT)/include/%.cpp
+	g++ -MMD -I$(VERILATOR_ROOT)/include -I$(VERILATOR_ROOT)/include/vltstd -DVL_PRINTF=printf -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -std=c++11 -c -o $@ $^
 
-simv: obj_dir/Vtop__ALL.a main.o
-	gcc -o $@ $^ -undefined dynamic_lookup
+%.o: $(BASEJUMP_STL_PATH)/bsg_test/%.cpp
+	g++ -MMD -I$(VERILATOR_ROOT)/include $(INCLUDES) -DVL_PRINTF=printf -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -std=c++11 -c -o $@ $<
+
+main.o: main.cpp obj_dir/Vtop__ALL.a
+	g++ -MMD -I$(VERILATOR_ROOT)/include $(INCLUDES) -DVL_PRINTF=printf -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -std=c++11 -c -o $@ $<
+
+simv: verilated.o verilated_dpi.o main.o bsg_nonsynth_dpi_clock_gen.o obj_dir/Vtop__ALL.a
+	g++ -std=c++11 $^ -o $@
+
+clean:
+	rm -rf obj_dir simv *.o *.d
+
+.PRECIOUS: obj_dir/Vtop.mk

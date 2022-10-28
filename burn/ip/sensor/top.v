@@ -26,13 +26,11 @@ module top
          
    logic [C_PULSE_CTR_WIDTH_LP - 1:0] ctr_pulse_o;
 
-   // TODO: Connect to GPIO / AXI
    logic [C_PULSE_CTR_SEL_WIDTH_LP - 1:0] pulse_sel_o;
    logic                                  pulse_sel_v_o;
    logic [31:0]                           pulse_len_o;
    logic                                  pulse_len_v_o;
 
-   // TODO: Connect to DPI FIFO
    wire [C_OUT_WIDTH-1:0] trace_i;
    wire                   trace_v_i;
    wire                   trace_yumi_o;
@@ -41,6 +39,29 @@ module top
    logic                                  pulse_v;
    logic [31:0]                           pulse_ctr;
 
+   bsg_nonsynth_dpi_gpio
+     #(
+       .width_p(C_PULSE_CTR_SEL_WIDTH_LP + 1)
+       ,.init_o_p('0)
+       ,.use_output_p('1)
+       ,.debug_p('0)
+       )
+   pulse_sel
+     (.gpio_o({pulse_sel_o, pulse_sel_v_o})
+      ,.gpio_i('0)
+      );
+
+   bsg_nonsynth_dpi_gpio
+     #(
+       .width_p(33)
+       ,.init_o_p('0)
+       ,.use_output_p('1)
+       ,.debug_p('0)
+       )
+   pulse_len
+     (.gpio_o({pulse_len_o, pulse_len_v_o})
+      ,.gpio_i('0)
+      );
 
    bsg_nonsynth_clock_gen
        #(.cycle_time_p(C_PERIOD_NS)
@@ -152,6 +173,19 @@ module top
       ,.yumi_i                           (trace_yumi_o)
       ); 
 
+   bsg_nonsynth_dpi_from_fifo
+     #(
+       .width_p                        (C_OUT_WIDTH)
+       ,.debug_p                        (0))
+   f2d_i
+     (
+      .yumi_o                           (trace_yumi_o)
+      ,.debug_o                         ()
+
+      ,.clk_i                           (capture_clk)
+      ,.reset_i                         (capture_reset_o)
+      ,.v_i                             (trace_v_i)
+      ,.data_i                          (trace_i));
    
    
 endmodule
